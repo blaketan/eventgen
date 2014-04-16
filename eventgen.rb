@@ -19,9 +19,21 @@ def event_gen(room_id)
 	
 	return rm_events.sort!{|a,b| a[:start_time] <=> b[:start_time]}
 end
- 
+=begin
 puts "Input room numbers seperated by spaces"
 rooms = gets.chomp.split( " ").to_a
+=end
+rooms = Array.new
+buildings = buildings = JSON.parse(open("available_rooms.json").read)
+
+buildings["buildings"].each do |bldg|
+ 	bldg["rooms"].each do |rm|
+ 		room = rm["id"]
+  		rooms << room
+  	end
+
+  
+end
 
 puts " Rooms are #{rooms}"
 
